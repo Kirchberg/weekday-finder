@@ -14,14 +14,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var yearLabel: UITextField!
     @IBOutlet weak var weekDayLabel: UILabel!
     @IBOutlet weak var findButtonLayout: UIButton!
-    private let dateFormatter: DateFormatter = {
-        let personalFormatter = DateFormatter()
-        personalFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        personalFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        return personalFormatter
-    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         findButtonLayout.layer.cornerRadius = 5
     }
     @IBAction func findDayButton(_ sender: UIButton) {
@@ -33,6 +28,9 @@ class ViewController: UIViewController {
         }
     }
     func getDay(_ timeLabel: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         guard let date = dateFormatter.date(from: timeLabel) else {
             return "Sorry but that's wrong date format"
         }
