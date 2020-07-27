@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         findButtonLayout.layer.cornerRadius = 5
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     @IBAction func findDayButton(_ sender: UIButton) {
         if let dayLabel = Int(dayLabel.text!), let monthLabel = Int(monthLabel.text!), let yearLabel = Int(yearLabel.text!) {
             let dateLabel: String = "\(yearLabel)-\(monthLabel)-\(dayLabel)T00:00:00"
