@@ -13,11 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var monthLabel: UITextField!
     @IBOutlet weak var yearLabel: UITextField!
     @IBOutlet weak var weekDayLabel: UILabel!
-    @IBOutlet weak var findButtonLayout: UIButton!
+    @IBOutlet weak var findButtonLayout: UIButton! {
+        didSet {
+            findButtonLayout.layer.cornerRadius = 5
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
-        findButtonLayout.layer.cornerRadius = 5
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
